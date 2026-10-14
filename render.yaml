@@ -1,10 +1,13 @@
 services:
   - type: web
     name: watermarks-remover
-    runtime: python
+    runtime: docker
     plan: free
-    startCommand: python service/scripts/server.py --host 0.0.0.0 --port $PORT
+    dockerfilePath: ./service/Dockerfile
+    dockerContext: ./service
     autoDeploy: true
     envVars:
       - key: WATERMARKS_SERVER_API_KEY
         generateValue: true
+      - key: WATERMARKS_SERVER_PORT
+        value: "10000"
