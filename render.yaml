@@ -2,8 +2,7 @@ services:
   - type: web
     name: watermarks-remover
     runtime: python
-    plan: free                    
-    buildCommand: pip install -r requirements.txt
+    plan: free                    # Make sure this is still here!
     startCommand: python service/scripts/server.py --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
     autoDeploy: true
